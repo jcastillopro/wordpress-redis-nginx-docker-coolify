@@ -71,7 +71,8 @@ services:
     expose:
       - 6379
     command:
-      - sh -c "./init.sh"
+      - sh -c "/redis/init.sh"
+    privileged: true
     volumes:
       - redis:/var/lib/redis
       - redis:/data
