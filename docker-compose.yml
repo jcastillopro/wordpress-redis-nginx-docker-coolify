@@ -112,7 +112,7 @@ services:
       #- traefik.http.routers.adminer-secure.tls.certresolver=letsencrypt
   redis:
     build:
-      context: ./dockerfiles/redis
+      context: ./redis/Dockerfile
       dockerfile: Dockerfile
     image: redis:7.4-alpine
     restart: always

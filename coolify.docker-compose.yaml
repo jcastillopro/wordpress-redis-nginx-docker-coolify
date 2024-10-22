@@ -64,7 +64,7 @@ services:
       - 8080
   redis:
     build:
-      context: ./dockerfiles/redis
+      context: ./redis/Dockerfile
       dockerfile: Dockerfile
     image: redis:7.4-alpine
     restart: always
