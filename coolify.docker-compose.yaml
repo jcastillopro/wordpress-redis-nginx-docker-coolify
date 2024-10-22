@@ -70,8 +70,6 @@ services:
     restart: always
     expose:
       - 6379
-    command:
-      - sh -c "/redis/init.sh"
     privileged: true
     volumes:
       - redis:/var/lib/redis

@@ -4,6 +4,6 @@ WORKDIR /redis
 
 COPY redis.conf /usr/local/etc/redis/redis.conf
 
-COPY init.sh ./init.sh
-
-RUN chmod +x init.sh
+COPY entrypoint.sh /entrypoint.sh
+RUN chmod +x /entrypoint.sh
+ENTRYPOINT "/entrypoint.sh"
