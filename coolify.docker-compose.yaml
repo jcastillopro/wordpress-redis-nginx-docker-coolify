@@ -63,17 +63,15 @@ services:
     expose:
       - 8080
   redis:
-    image: redis:latest
+    build:
+      context: ./dockerfiles/redis
+      dockerfile: Dockerfile
+    image: redis:7.4-alpine
     restart: always
     expose:
       - 6379
     command:
-      - redis-server
-      - --save 60 1
-      - --loglevel warning
-      - --maxmemory 128mb
-      - --maxmemory-policy allkeys-lru
+      - sh -c "./init.sh"
     volumes:
       - redis:/var/lib/redis
       - redis:/data
-      #- ./redis.conf:/usr/local/etc/redis/redis.conf
