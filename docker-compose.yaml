@@ -34,6 +34,7 @@ services:
       WORDPRESS_CONFIG_EXTRA: |
         define( 'WP_REDIS_HOST', 'redis' );
         define( 'WP_REDIS_PORT', 6379 );
+        define('WP_CACHE_KEY_SALT', 'redis-test.prostos.com');
         define( 'COMPRESS_CSS', true );
         define( 'COMPRESS_SCRIPTS', true );
         define( 'CONCATENATE_SCRIPTS', true );
