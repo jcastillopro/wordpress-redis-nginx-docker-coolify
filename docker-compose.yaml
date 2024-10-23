@@ -5,7 +5,6 @@ services:
     build:
       context: ./nginx
       dockerfile: Dockerfile
-    image: nginx:latest
     container_name: ${APP_NAME}-nginx
     restart: always
     depends_on:
@@ -17,7 +16,9 @@ services:
       - nginx/logs:/var/log/nginx
       - wordpress-files:/var/www/html:rw
   wordpress:
-    image: wordpress:php8.0-fpm-alpine
+    build:
+      context: ./wordpress
+      dockerfile: Dockerfile
     restart: always
     depends_on:
       - mariadb
@@ -32,6 +33,7 @@ services:
       WORDPRESS_TABLE_PREFIX: ${WP_DB_PREFIX}
       WORDPRESS_DEBUG: ${WORDPRESS_DEBUG:-false}
       WORDPRESS_CONFIG_EXTRA: |
+        define('WP_CACHE', true);
         define( 'WP_REDIS_HOST', 'redis' );
         define( 'WP_REDIS_PORT', 6379 );
         define('WP_CACHE_KEY_SALT', 'redis-test.prostos.com');
@@ -47,7 +49,6 @@ services:
         define( 'DISALLOW_FILE_EDIT', true );
     volumes:
       - wordpress-files:/var/www/html:rw
-      - ./wordpress/wordpress.ini:/usr/local/etc/php/conf.d/wordpress.ini
   mariadb:
     image: mariadb:latest
     container_name: ${APP_NAME}-mariadb
@@ -73,7 +74,6 @@ services:
     build:
       context: ./redis
       dockerfile: Dockerfile
-    image: redis:7.4-alpine
     container_name: ${APP_NAME}-redis
     restart: always
     expose:
