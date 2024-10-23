@@ -93,5 +93,6 @@ services:
     networks:
       - wordpress-site
 networks:
-  name: wordpress-site
-  external: true
+  wordpress-site:
+    name: wordpress-site
+    external: true
