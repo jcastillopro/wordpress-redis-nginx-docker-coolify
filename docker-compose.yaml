@@ -14,7 +14,7 @@ services:
       - 80
       - 443
     volumes:
-      #- ./nginx/conf:/etc/nginx/conf.d
+      - ./nginx/conf:/etc/nginx/conf.d
       - nginx/logs:/var/log/nginx
       - wordpress-files:/var/www/html
   wordpress:
