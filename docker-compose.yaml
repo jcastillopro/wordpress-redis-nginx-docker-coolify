@@ -11,9 +11,9 @@ services:
       - "CLIENT_MAX_BODY_SIZE=${CLIENT_MAX_BODY_SIZE}"
     depends_on:
       - wordpress
-    ports:
-      - "80:80"
-      - "443:443"
+    expose:
+      - 80
+      - 443
     volumes:
       - "./nginx/:/etc/nginx/templates/"
       - nginx/logs:/var/log/nginx
