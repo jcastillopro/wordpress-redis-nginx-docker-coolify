@@ -2,20 +2,18 @@ version: "3.8"
 
 services:
   nginx:
+    build:
+      context: ./nginx
+      dockerfile: Dockerfile
     image: nginx:latest
     container_name: ${APP_NAME}-nginx
     restart: always
-    environment:
-      - "DOMAIN=${DOMAIN}"
-      - "NGINX_ENVSUBST_TEMPLATE_SUFFIX=.template"
-      - "CLIENT_MAX_BODY_SIZE=${CLIENT_MAX_BODY_SIZE}"
     depends_on:
       - wordpress
     expose:
       - 80
       - 443
     volumes:
-      - ./nginx:/etc/nginx/conf.d
       - nginx/logs:/var/log/nginx
       - wordpress-files:/var/www/html:rw
   wordpress:
