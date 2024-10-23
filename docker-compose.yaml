@@ -47,7 +47,7 @@ services:
         define( 'DISALLOW_FILE_EDIT', true );
     volumes:
       - wordpress-files:/var/www/html
-      - ./wordpress/php.ini:/usr/local/etc/php/conf.d/php.ini
+      - ./wordpress/php.ini:/usr/local/etc/php/conf.d/wordpress.ini
   mariadb:
     image: mariadb:latest
     container_name: ${APP_NAME}-mariadb
