@@ -14,7 +14,7 @@ services:
       - 443
     volumes:
       - nginx/logs:/var/log/nginx
-      - wordpress-files:/var/www/html:rw
+      - wordpress-files:/var/www/html
   wordpress:
     build:
       context: ./wordpress
@@ -48,7 +48,7 @@ services:
         define( 'IMAGE_EDIT_OVERWRITE', true );
         define( 'DISALLOW_FILE_EDIT', true );
     volumes:
-      - wordpress-files:/var/www/html:rw
+      - wordpress-files:/var/www/html
   mariadb:
     image: mariadb:latest
     container_name: ${APP_NAME}-mariadb
