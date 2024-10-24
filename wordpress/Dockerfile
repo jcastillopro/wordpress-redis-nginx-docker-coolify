@@ -9,6 +9,6 @@ RUN apt-get install -y redis
 
 COPY ./redis.conf /usr/local/etc/redis/redis.conf
 
-RUN sysctl vm.overcommit_memory=1
+# RUN sysctl vm.overcommit_memory=1
 
 RUN systemctl enable redis-server && redis-server /usr/local/etc/redis/redis.conf --save 60 1 --loglevel warning --maxmemory 128mb --maxmemory-policy allkeys-lru
