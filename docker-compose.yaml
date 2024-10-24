@@ -23,6 +23,7 @@ services:
       - redis
     expose:
       - 9000
+    privileged: true
     environment:
       WORDPRESS_DB_HOST: mariadb
       WORDPRESS_DB_NAME: ${WP_DB_NAME}
