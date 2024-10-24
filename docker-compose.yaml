@@ -1,5 +1,3 @@
-version: "3.8"
-
 services:
   nginx:
     build:
@@ -14,7 +12,7 @@ services:
       - 443
     volumes:
       - nginx/logs:/var/log/nginx
-      - wordpress-files:/var/www/html
+      - wordpress-files:/var/www/html:rwo
   wordpress:
     build:
       context: ./wordpress
