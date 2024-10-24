@@ -10,7 +10,7 @@ echo "deb [signed-by=/usr/share/keyrings/redis-archive-keyring.gpg] https://pack
 sudo apt-get update &&\
 sudo apt-get install redis
 
-COPY ../redis/redis.conf /usr/local/etc/redis/redis.conf
+COPY ./redis.conf /usr/local/etc/redis/redis.conf
 
 RUN sysctl vm.overcommit_memory=1
 
